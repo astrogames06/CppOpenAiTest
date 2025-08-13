@@ -1,0 +1,1 @@
+em++ main.cpp -std=c++17 -o index.html -Iinclude -Llib ./lib/libraylib.web.a -s FETCH=1 -s EXPORTED_RUNTIME_METHODS=['ccall','cwrap']  -s USE_GLFW=3 --shell-file shell.html -DPLATFORM_WEB

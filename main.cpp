@@ -42,6 +42,8 @@ int main(void)
 	return 0;
 }
 
+bool text_box = false;
+std::string text_box_str;
 void UpdateDrawFrame()
 {
 	BeginDrawing();
@@ -49,10 +51,15 @@ void UpdateDrawFrame()
 	ClearBackground(RAYWHITE);
 
 	DrawText("Ask AI", 100, 100, 20, BLACK);
-    DrawText(gpt_str.c_str(), 100, 130, 20, BLACK);
 
-    // if (IsKeyPressed(KEY_SPACE))
-    //     ask_gpt("Hello!");
+	std::string gpt_d = "GPT: " + gpt_str;
+    DrawText(gpt_d.c_str(), 100, 130, 20, BLACK);
+
+	if (GuiTextBox({100, 155, 100, 45}, &text_box_str[0], 20, text_box)) text_box = !text_box;
+    if (GuiButton({100, 200, 100, 45}, "SEND!"))
+	{
+		ask_gpt(text_box_str.c_str());
+	}
 
 	EndDrawing();
 }
